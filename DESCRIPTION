@@ -2,9 +2,9 @@ Package: ritis
 Description: An interface to the Integrated Taxonomic Information
         System (ITIS).
 Title: Taxonomic search of ITIS data.
-Version: 0.0.1
+Version: 0.0.2
 License: CC0
-Date: 2012-10-13
+Date: 2012-11-06
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
         email = "myrmecocystus@gmail.com"))
 Imports: RCurl, XML, plyr
@@ -35,8 +35,8 @@ Collate: 'getcommentdetailfromtsn.R' 'getitistermsfromcommonname.R'
         'getjurisdictionvalues.R' 'getkingdomnames.R'
         'getlastchangedate.R' 'getranknames.R'
         'getvernacularlanguages.R'
-Packaged: 2012-10-17 04:02:06 UTC; ScottMac
+Packaged: 2012-11-06 18:31:00 UTC; ScottMac
 Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 Repository: CRAN
-Date/Publication: 2012-10-17 08:43:53
+Date/Publication: 2012-11-06 20:21:24

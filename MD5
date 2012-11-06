@@ -1,6 +1,6 @@
-55888186c014d700014e4b7fb76c2365 *DESCRIPTION
+a257d9a251bd9fff9ad278adecea6eca *DESCRIPTION
 1490f8fb6676a3fb024df6a5775b1f0e *NAMESPACE
-0f03c4b850154b88f684566a2e8a365c *NEWS
+f912d1eb13816ddb1c65ce8b65ada071 *NEWS
 5bcede3c3ce436c9189b891e6d525cfd *R/getacceptednamesfromtsn.R
 83238a294058dbfb8d1636dab485a9c9 *R/getanymatchcount.R
 a53030dee318510989499ffed5f348ae *R/getcommentdetailfromtsn.R
@@ -62,7 +62,7 @@ d80828855c647a7213ea60cd55c912ab *inst/tests/test-getcredibilityratingfromtsn.R
 13825e886c95c76179cebab76a8f5f65 *inst/tests/test-getcredibilityratings.R
 a81a51e7ecf7e5a4a1c0ec492a43fa4b *inst/tests/test-getcurrencyfromtsn.R
 a32a2c5b8c9e2498d0a31a71973d5b35 *inst/tests/test-getdatedatafromtsn.R
-72200453322bf29a9f979443648e5718 *inst/tests/test-getdescription.R
+c0b4365901b27e7a309df346bd6e94d7 *inst/tests/test-getdescription.R
 6be66faaaf058c3015066e7e081dcc16 *inst/tests/test-getexpertsfromtsn.R
 afe857524085e50e987e17cf09614bf9 *inst/tests/test-getfullhierarchyfromtsn.R
 e4279fdc39ce3984149194d47dac5c8c *inst/tests/test-getfullrecordfromlsid.R
@@ -116,4 +116,3 @@ a3799b3c73a203a7cf5d65a621af049b *man/searchbycommonnameendswith.Rd
 a4e5e384cd04e374df35adf307944c32 *man/searchbyscientificname.Rd
 b9d2447b11be4673c97504930a6933c0 *man/searchforanymatch.Rd
 395d758c52f65365bf2f6da65a9d8bad *man/searchforanymatchpaged.Rd
-92754b86b03fc4a47752ba3624120d19 *tests/test-all.R
