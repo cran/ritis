@@ -1,38 +1,56 @@
-ritis
-=====
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{ritis introduction}
+%\VignetteEncoding{UTF-8}
+-->
 
 
 
-[![Build Status](https://travis-ci.org/ropensci/ritis.svg?branch=master)](https://travis-ci.org/ropensci/ritis)
-[![Build status](https://ci.appveyor.com/api/projects/status/pvrc9muevha00fie/branch/master?svg=true)](https://ci.appveyor.com/project/sckott/ritis/branch/master)
-[![codecov](https://codecov.io/gh/ropensci/ritis/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/ritis)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/ritis)](https://github.com/metacran/cranlogs.app)
+ritis introduction
+==================
 
-* [ITIS API Docs](http://www.itis.gov/ws_description.html)
-* [Solr service](http://www.itis.gov/solr_documentation.html)
+An interface to the Integrated Taxonomic Information System (ITIS)
 
 ## Installation
 
-Stable, CRAN version
+Install from CRAN
 
 
 ```r
 install.packages("ritis")
 ```
 
-Dev version
+Or install the development version from GitHub
 
 
 ```r
 devtools::install_github("ropensci/ritis")
 ```
 
+Load `ritis`
+
 
 ```r
 library("ritis")
 ```
 
-## Solr service
+## ITIS Solr interface
+
+There are four methods.
+
+* `itis_search()` - Search
+* `itis_group()` - Group
+* `itis_highlight()` - Hightlight
+* `itis_facet()` - Facet
+
+These four methods use the equivalent functions in the package `solrium`, e.g.,
+`ritis::itis_search()` uses `solrium::solr_search()`, etc. The `itis_*()` functions
+simply use `...` to allow users to pass on parameters to the wrapped `solrium`
+functions. So do read the `solrium` docs.
+
+ITIS Solr API docs: [http://www.itis.gov/solr_documentation.html](http://www.itis.gov/solr_documentation.html)
+
+Some examples:
 
 matches only monomials
 
@@ -89,7 +107,13 @@ itis_search(q = "nameWOInd:/[A-Za-z0-9]*[%20]{1,1}[A-Za-z0-9]*/")
 #>   taxonAuthor <chr>, parentTSN <chr>.
 ```
 
-## REST API
+## ITIS REST API interface
+
+ITIS REST API docs: [http://www.itis.gov/ws_description.html](http://www.itis.gov/ws_description.html)
+
+The following are some example uses. There are many more methods not shown below
+
+-------
 
 Get accepted names for a TSN
 
@@ -138,12 +162,3 @@ hierarchy_full(tsn = 37906)
 #> 10       Asterales     35419        Family      Asteraceae  35420
 #> ..             ...       ...           ...             ...    ...
 ```
-
-## Meta
-
-* Please [report any issues or bugs](https://github.com/ropensci/ritis/issues).
-* License: MIT
-* Get citation information for `ritis` in R doing `citation(package = 'ritis')`
-* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
-
-[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
