@@ -244,15 +244,14 @@ hr {
 simply use <code>...</code> to allow users to pass on parameters to the wrapped <code>solrium</code>
 functions. So do read the <code>solrium</code> docs.</p>
 
-<p>ITIS Solr API docs: <a href="http://www.itis.gov/solr_documentation.html">http://www.itis.gov/solr_documentation.html</a></p>
+<p>ITIS Solr API docs: <a href="https://www.itis.gov/solr_documentation.html">https://www.itis.gov/solr_documentation.html</a></p>
 
 <p>Some examples:</p>
 
 <p>matches only monomials</p>
 
 <pre><code class="r">itis_search(q = &quot;nameWOInd:/[A-Za-z0-9]*[%20]{0,0}*/&quot;)
-#&gt; Source: local data frame [10 x 26]
-#&gt; 
+#&gt; # A tibble: 10 × 27
 #&gt;      tsn          nameWInd         nameWOInd             unit1   usage
 #&gt;    &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;
 #&gt; 1     51     Schizomycetes     Schizomycetes     Schizomycetes invalid
@@ -265,20 +264,20 @@ functions. So do read the <code>solrium</code> docs.</p>
 #&gt; 8     57       Nitrobacter       Nitrobacter       Nitrobacter   valid
 #&gt; 9     65      Nitrosomonas      Nitrosomonas      Nitrosomonas   valid
 #&gt; 10    70  Thiobacteriaceae  Thiobacteriaceae  Thiobacteriaceae invalid
-#&gt; Variables not shown: unacceptReason &lt;chr&gt;, credibilityRating &lt;chr&gt;,
-#&gt;   completenessRating &lt;chr&gt;, currencyRating &lt;chr&gt;, kingdom &lt;chr&gt;, rankID
-#&gt;   &lt;chr&gt;, rank &lt;chr&gt;, hierarchySoFar &lt;chr&gt;, hierarchySoFarWRanks &lt;chr&gt;,
-#&gt;   hierarchyTSN &lt;chr&gt;, synonyms &lt;chr&gt;, synonymTSNs &lt;chr&gt;, otherSource
-#&gt;   &lt;chr&gt;, acceptedTSN &lt;chr&gt;, comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate
-#&gt;   &lt;chr&gt;, _version_ &lt;dbl&gt;, taxonAuthor &lt;chr&gt;, vernacular &lt;chr&gt;, parentTSN
-#&gt;   &lt;chr&gt;.
+#&gt; # ... with 22 more variables: unacceptReason &lt;chr&gt;,
+#&gt; #   credibilityRating &lt;chr&gt;, completenessRating &lt;chr&gt;,
+#&gt; #   currencyRating &lt;chr&gt;, kingdom &lt;chr&gt;, rankID &lt;chr&gt;, rank &lt;chr&gt;,
+#&gt; #   hierarchySoFar &lt;chr&gt;, hierarchySoFarWRanks &lt;chr&gt;, hierarchyTSN &lt;chr&gt;,
+#&gt; #   synonyms &lt;chr&gt;, synonymTSNs &lt;chr&gt;, otherSource &lt;chr&gt;,
+#&gt; #   acceptedTSN &lt;chr&gt;, comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate &lt;chr&gt;,
+#&gt; #   `_version_` &lt;dbl&gt;, taxonAuthor &lt;chr&gt;, vernacular &lt;chr&gt;,
+#&gt; #   hierarchicalSort &lt;chr&gt;, parentTSN &lt;chr&gt;
 </code></pre>
 
 <p>matches only binomials</p>
 
 <pre><code class="r">itis_search(q = &quot;nameWOInd:/[A-Za-z0-9]*[%20]{1,1}[A-Za-z0-9]*/&quot;)
-#&gt; Source: local data frame [10 x 24]
-#&gt; 
+#&gt; # A tibble: 10 × 25
 #&gt;      tsn                  nameWInd                 nameWOInd        unit1
 #&gt;    &lt;chr&gt;                     &lt;chr&gt;                     &lt;chr&gt;        &lt;chr&gt;
 #&gt; 1     58        Nitrobacter agilis        Nitrobacter agilis  Nitrobacter
@@ -291,12 +290,13 @@ functions. So do read the <code>solrium</code> docs.</p>
 #&gt; 8     67 Nitrosomonas groningensis Nitrosomonas groningensis Nitrosomonas
 #&gt; 9     68   Nitrosomonas javenensis   Nitrosomonas javenensis Nitrosomonas
 #&gt; 10    69    Nitrosomonas monocella    Nitrosomonas monocella Nitrosomonas
-#&gt; Variables not shown: unit2 &lt;chr&gt;, usage &lt;chr&gt;, unacceptReason &lt;chr&gt;,
-#&gt;   credibilityRating &lt;chr&gt;, kingdom &lt;chr&gt;, rankID &lt;chr&gt;, rank &lt;chr&gt;,
-#&gt;   hierarchySoFar &lt;chr&gt;, hierarchySoFarWRanks &lt;chr&gt;, hierarchyTSN &lt;chr&gt;,
-#&gt;   synonyms &lt;chr&gt;, synonymTSNs &lt;chr&gt;, otherSource &lt;chr&gt;, acceptedTSN &lt;chr&gt;,
-#&gt;   comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate &lt;chr&gt;, _version_ &lt;dbl&gt;,
-#&gt;   taxonAuthor &lt;chr&gt;, parentTSN &lt;chr&gt;.
+#&gt; # ... with 21 more variables: unit2 &lt;chr&gt;, usage &lt;chr&gt;,
+#&gt; #   unacceptReason &lt;chr&gt;, credibilityRating &lt;chr&gt;, kingdom &lt;chr&gt;,
+#&gt; #   rankID &lt;chr&gt;, rank &lt;chr&gt;, hierarchySoFar &lt;chr&gt;,
+#&gt; #   hierarchySoFarWRanks &lt;chr&gt;, hierarchyTSN &lt;chr&gt;, synonyms &lt;chr&gt;,
+#&gt; #   synonymTSNs &lt;chr&gt;, otherSource &lt;chr&gt;, acceptedTSN &lt;chr&gt;,
+#&gt; #   comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate &lt;chr&gt;, `_version_` &lt;dbl&gt;,
+#&gt; #   taxonAuthor &lt;chr&gt;, parentTSN &lt;chr&gt;, hierarchicalSort &lt;chr&gt;
 </code></pre>
 
 <h2>ITIS REST API interface</h2>
@@ -310,8 +310,7 @@ functions. So do read the <code>solrium</code> docs.</p>
 <p>Get accepted names for a TSN</p>
 
 <pre><code class="r">accepted_names(tsn = 504239)
-#&gt; Source: local data frame [1 x 3]
-#&gt; 
+#&gt; # A tibble: 1 × 3
 #&gt;          acceptedName acceptedTsn     author
 #&gt;                 &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;
 #&gt; 1 Dasiphora fruticosa      836659 (L.) Rydb.
@@ -320,8 +319,7 @@ functions. So do read the <code>solrium</code> docs.</p>
 <p>Get common names for a TSN</p>
 
 <pre><code class="r">common_names(tsn = 183833)
-#&gt; Source: local data frame [3 x 3]
-#&gt; 
+#&gt; # A tibble: 3 × 3
 #&gt;            commonName language    tsn
 #&gt;                 &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;
 #&gt; 1 African hunting dog  English 183833
@@ -332,10 +330,9 @@ functions. So do read the <code>solrium</code> docs.</p>
 <p>Full hierarchy for a TSN</p>
 
 <pre><code class="r">hierarchy_full(tsn = 37906)
-#&gt; Source: local data frame [60 x 5]
-#&gt; 
+#&gt; # A tibble: 60 × 5
 #&gt;         parentname parenttsn      rankname       taxonname    tsn
-#&gt;              &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;
+#&gt; *            &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;
 #&gt; 1                                  Kingdom         Plantae 202422
 #&gt; 2          Plantae    202422    Subkingdom   Viridiplantae 954898
 #&gt; 3    Viridiplantae    954898  Infrakingdom    Streptophyta 846494
@@ -346,7 +343,7 @@ functions. So do read the <code>solrium</code> docs.</p>
 #&gt; 8    Magnoliopsida     18063    Superorder       Asteranae 846535
 #&gt; 9        Asteranae    846535         Order       Asterales  35419
 #&gt; 10       Asterales     35419        Family      Asteraceae  35420
-#&gt; ..             ...       ...           ...             ...    ...
+#&gt; # ... with 50 more rows
 </code></pre>
 
 </body>

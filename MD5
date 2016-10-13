@@ -1,7 +1,7 @@
-bd02e5f664dea9c20be111fe16c3b1c0 *DESCRIPTION
+5d4b1831ddfe284699920aa921e02cf1 *DESCRIPTION
 769bdbb0572f2eefda48945aefb690fc *LICENSE
 f190feff6fed516a9a30de61c46237fb *NAMESPACE
-2a9e8cb8af23cb6a301fbac79147ccfa *NEWS.md
+66b5700daad3f360a7ba6b3db48e1860 *NEWS.md
 3066dfc7a79d0ca3a252c4a754b95be0 *R/accepted_names.R
 37386f472bbbb2882dc1c5d6a6a06a21 *R/any_match_count.R
 831e5e5ca71efc848aaeaac87692f904 *R/comment_detail.R
@@ -37,7 +37,7 @@ ffa7c485c719249b2636aadf02656c71 *R/review_year.R
 9558f5a6f7c5c5a99e55a1cba74623a7 *R/scientific_name.R
 9c4a93f3eae871ec710a19693b6a0851 *R/search_any_match_paged.R
 799fdff3480b82f7802d531c262cf030 *R/search_anymatch.R
-c638a88f900e157f50f57f48e829a4d7 *R/search_common.R
+00b179815b27b44d3c7d91bfe8665978 *R/search_common.R
 be24bd7df20254d577e70132a12e8552 *R/search_scientific.R
 d4bc1c873805bab04c7e0f66eea6f88c *R/solr.R
 ea4946729a3601a0b4459fc287baf0a4 *R/synonym_names.R
@@ -48,13 +48,13 @@ d686fe922073edc1d71c61c12f39f329 *R/tsn2lsid.R
 253a4e4f5f5b3f5c15b7a5bf6b01ea24 *R/unacceptability_reason.R
 2834004b13a9980bbaeb850acd6ca380 *R/usage.R
 83432a59f5548719b76c1210f8b1d600 *R/vernacular_languages.R
-e0ef0709ae7a84b2d8c27c59537b39a7 *R/zzz.R
-052861557107a546945d8f9db8fcd227 *README.md
+22b8f0da859e691d410b69b73c560a15 *R/zzz.R
+e909169c0268918e5ad4de7c13e40aed *README.md
 2a7c01022b5a693d3a7edd39c4ee5c12 *build/vignette.rds
-63f46aca09745dcf88c99c217fe769bd *inst/doc/ritis_vignette.Rmd
-5428552ba0d994e1a941897414526021 *inst/doc/ritis_vignette.html
-99a0cf47989a3bd28b4bc1905397ec90 *inst/vign/ritis_vignette.Rmd
-63f46aca09745dcf88c99c217fe769bd *inst/vign/ritis_vignette.md
+9e0a7a3907c8fe78e848f173265e6260 *inst/doc/ritis_vignette.Rmd
+9eb3081bad62974cb4df49627f05dfb4 *inst/doc/ritis_vignette.html
+b5fc1b86f9d86ee10387c0ee4d6cf0f7 *inst/vign/ritis_vignette.Rmd
+9e0a7a3907c8fe78e848f173265e6260 *inst/vign/ritis_vignette.md
 060d4e0af7386fdc74ebf7735a45f29b *man/accepted_names.Rd
 f70803148db1a0e0d9c8330ab2894f34 *man/any_match_count.Rd
 204baa036c7ea8e04e74382a1163dd47 *man/comment_detail.Rd
@@ -90,7 +90,7 @@ f958bfd7fa4e85e8871b2c3b40475b04 *man/other_sources.Rd
 9654455ba564c0e55bbd8f4c56ce3b27 *man/scientific_name.Rd
 ada057155aaae81765d3638d6858ccff *man/search_any_match_paged.Rd
 2edf31ab349b195b73622e05b0da1b3e *man/search_anymatch.Rd
-b867ac56652b965cdab6e709de4bb736 *man/search_common.Rd
+b92f1af810d3799781f07df7ff17b8cf *man/search_common.Rd
 9a780ebc329980720d38001f18f7f78a *man/search_scientific.Rd
 2a4eb4b08eb39d24cfd6858d229f3d80 *man/solr.Rd
 80754394a82527d72c42718d4b4be538 *man/synonym_names.Rd
@@ -105,7 +105,7 @@ dcf53f0f8e4c0a006ee54f46db40d3ab *man/vernacular_languages.Rd
 6de6bfda4529c5811788f56ef88d257b *tests/testthat/helper.R
 16d6cb8e540be05d6dd4b9c38b1dc29c *tests/testthat/test-any_match_count.R
 4b547c91008c9efac895d337c3ff71a8 *tests/testthat/test-hierarchy.R
-7c4e712b04926ed41586d80a0f4ec7f7 *tests/testthat/test-itis_facet.R
+b0561ba2ea6c83a65e524f3f78429d17 *tests/testthat/test-itis_facet.R
 8f0cc9f23a1b5d1d63e57c5b79102f19 *tests/testthat/test-itis_group.R
 7b947d7b545d2ea498fe387b0fd8cfef *tests/testthat/test-itis_highlight.R
 b8d1e69d7cf3eec4ffa405bb73f3773a *tests/testthat/test-itis_search.R
@@ -115,4 +115,4 @@ baeaa8f253f86f82fece2028e4fe70f0 *tests/testthat/test-kingdoms.R
 fb9dc6f954548aecc6c83ee5d36249cd *tests/testthat/test-record.R
 d79f700bcedff969a0ad09b8ad4c9771 *tests/testthat/test-search_common.R
 b64e1e75d67150bc6c8790d4403821ed *tests/testthat/test-search_scientific.R
-63f46aca09745dcf88c99c217fe769bd *vignettes/ritis_vignette.Rmd
+9e0a7a3907c8fe78e848f173265e6260 *vignettes/ritis_vignette.Rmd
