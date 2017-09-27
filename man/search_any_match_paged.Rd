@@ -22,7 +22,7 @@ for descending (logical)}
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 a data.frame
@@ -41,4 +41,3 @@ search_any_match_paged(x="Zy", pagesize=100, pagenum=1, ascend=FALSE)
 \seealso{
 \code{\link{search_anymatch}}
 }
-

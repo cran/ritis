@@ -14,7 +14,7 @@ unacceptability_reason(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Returns the unacceptability reason, if any, for the TSN.
@@ -24,4 +24,3 @@ Returns the unacceptability reason, if any, for the TSN.
 unacceptability_reason(tsn = 183671)
 }
 }
-

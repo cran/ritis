@@ -3,7 +3,7 @@ context("hierarchy functions")
 test_that("hierarchy_down basic functionality works", {
   skip_on_cran()
 
-  aa <- hierarchy_down(tsn = 161030)
+  aa <- hierarchy_down(tsn = 179913)
 
   expect_is(aa, "data.frame")
   expect_is(aa, "tbl_df")
@@ -43,16 +43,10 @@ test_that("hierarchy functions fail well", {
   expect_error(hierarchy_up(), "\"tsn\" is missing")
   expect_error(hierarchy_full(), "\"tsn\" is missing")
 
-  # tsn's not found lead to 0 row data.frame's
-  tmp <- hierarchy_down(tsn = "Asdfasdfa")
-  expect_is(tmp, "tbl_df")
-  expect_equal(NROW(tmp), 0)
+  # tsn's not found gives 404
+  expect_error(hierarchy_down(tsn = "Asdfasdfa"), "Not Found")
 
-  tmp <- hierarchy_up(tsn = "Asdfasdfa")
-  expect_is(tmp, "tbl_df")
-  expect_equal(NROW(tmp), 0)
+  expect_error(hierarchy_up(tsn = "Asdfasdfa"), "Not Found")
 
-  tmp <- hierarchy_full(tsn = "Asdfasdfa")
-  expect_is(tmp, "tbl_df")
-  expect_equal(NROW(tmp), 0)
+  expect_error(hierarchy_full(tsn = "Asdfasdfa"), "Not Found")
 })

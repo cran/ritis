@@ -1,7 +1,7 @@
 #' Search for any match
 #'
 #' @export
-#' @template common
+#' @inheritParams accepted_names
 #' @inheritParams any_match_count
 #' @return a data.frame
 #' @seealso \code{\link{search_any_match_paged}}
@@ -17,7 +17,8 @@ search_anymatch <- function(x, wt = "json", raw = FALSE, ...) {
   names(tmp) <- paste0("common_", names(tmp))
   x <- suppressWarnings(
     cbind(
-      dr_op(x, c("commonNameList.commonNames", "commonNameList.class", "commonNameList.tsn", "class")),
+      dr_op(x, c("commonNameList.commonNames", "commonNameList.class",
+                 "commonNameList.tsn", "class")),
       tmp
     )
   )

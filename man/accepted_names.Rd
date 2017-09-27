@@ -14,7 +14,7 @@ accepted_names(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 Zero row data.frame if the name is accepted, otherwise a data.frame
@@ -35,4 +35,3 @@ accepted_names(tsn = 504239)
 accepted_names(tsn = 208527, raw = TRUE)
 }
 }
-

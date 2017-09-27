@@ -14,7 +14,7 @@ other_sources(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Returns a list of the other sources used for the TSN.
@@ -25,4 +25,3 @@ other_sources(tsn=182662)
 other_sources(tsn=182662, wt = "xml")
 }
 }
-

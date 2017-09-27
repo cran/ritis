@@ -1,15 +1,14 @@
 #' Returns a list of the pulications used for the TSN.
 #'
 #' @export
-#' @template common
+#' @inheritParams accepted_names
 #' @template tsn
 #' @return a data.frame
 #' @examples \dontrun{
 #' publications(tsn = 70340)
 #' publications(tsn = 70340, wt = "xml")
 #'
-#' library(httr)
-#' publications(tsn = 70340, config = verbose())
+#' publications(tsn = 70340, verbose = TRUE)
 #' }
 publications <- function(tsn, wt = "json", raw = FALSE, ...) {
   out <- itis_GET("getPublicationsFromTSN", list(tsn = tsn), wt, ...)

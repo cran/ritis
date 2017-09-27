@@ -2,9 +2,9 @@
 % Please edit documentation in R/jurisdiction.R
 \name{jurisdiction}
 \alias{jurisdiction}
+\alias{jurisdictional_origin}
 \alias{jurisdiction_origin_values}
 \alias{jurisdiction_values}
-\alias{jurisdictional_origin}
 \title{Get jurisdictional origin from tsn}
 \usage{
 jurisdictional_origin(tsn, wt = "json", raw = FALSE, ...)
@@ -21,13 +21,13 @@ jurisdiction_values(wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 \itemize{
- \item jurisdictional_origin: data.frame
- \item jurisdiction_origin_values: data.frame
- \item jurisdiction_values: character vector
+\item jurisdictional_origin: data.frame
+\item jurisdiction_origin_values: data.frame
+\item jurisdiction_values: character vector
 }
 }
 \description{
@@ -36,9 +36,9 @@ Get jurisdictional origin from tsn
 \details{
 Jurisdiction methods:
 \itemize{
- \item jurisdictional_origin: Get jurisdictional origin from tsn
- \item jurisdiction_origin_values: Get jurisdiction origin values
- \item jurisdiction_values: Get all possible jurisdiction values
+\item jurisdictional_origin: Get jurisdictional origin from tsn
+\item jurisdiction_origin_values: Get jurisdiction origin values
+\item jurisdiction_values: Get all possible jurisdiction values
 }
 }
 \examples{
@@ -51,4 +51,3 @@ jurisdiction_origin_values()
 jurisdiction_values()
 }
 }
-

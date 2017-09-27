@@ -14,7 +14,7 @@ record(lsid, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 a data.frame
@@ -24,12 +24,11 @@ Gets a record from an LSID
 }
 \details{
 Gets the partial ITIS record for the TSN in the LSID, found by comparing the
- TSN in the search key to the TSN field. Returns an empty result set if
- there is no match or the TSN is invalid.
+TSN in the search key to the TSN field. Returns an empty result set if
+there is no match or the TSN is invalid.
 }
 \examples{
 \dontrun{
 record(lsid = "urn:lsid:itis.gov:itis_tsn:180543")
 }
 }
-

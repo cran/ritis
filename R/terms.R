@@ -1,10 +1,10 @@
 #' Get ITIS terms, i.e., tsn's, authors, common names, and scientific names.
 #'
 #' @export
-#' @template common
+#' @inheritParams accepted_names
 #' @param query One or more common or scientific names, or partial names
-#' @param what One of both (search common and scientific names), common (search just
-#'    common names), or scientific (search just scientific names)
+#' @param what One of both (search common and scientific names), common
+#' (search just common names), or scientific (search just scientific names)
 #' @examples \dontrun{
 #' # Get terms searching both common and scientific names
 #' terms(query='bear')
@@ -22,8 +22,10 @@ terms <- function(query, what = "both", wt = "json", raw = FALSE, ...) {
   what <- match.arg(what, c('both', 'scientific', 'common'))
   temp <- switch(what,
                  both = lapply(query, function(x) itisterms(x, wt, raw, ...)),
-                 common = lapply(query, function(x) itistermsfromcommonname(x, wt, raw, ...)),
-                 scientific = lapply(query, function(x) itistermsfromscientificname(x, wt, raw, ...)))
+                 common = lapply(query, function(x)
+                   itistermsfromcommonname(x, wt, raw, ...)),
+                 scientific = lapply(query, function(x)
+                   itistermsfromscientificname(x, wt, raw, ...)))
   if (length(query) == 1) {
     temp[[1]]
   } else {

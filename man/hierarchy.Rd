@@ -3,8 +3,8 @@
 \name{hierarchy}
 \alias{hierarchy}
 \alias{hierarchy_down}
-\alias{hierarchy_full}
 \alias{hierarchy_up}
+\alias{hierarchy_full}
 \title{Get hierarchy down from tsn}
 \usage{
 hierarchy_down(tsn, wt = "json", raw = FALSE, ...)
@@ -21,7 +21,7 @@ hierarchy_full(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Get hierarchy down from tsn
@@ -29,23 +29,25 @@ Get hierarchy down from tsn
 \details{
 Hierarchy methods:
 \itemize{
- \item hierarchy_down: Get hierarchy down from tsn
- \item hierarchy_up: Get hierarchy up from tsn
- \item hierarchy_full: Get full hierarchy from tsn
+\item hierarchy_down: Get hierarchy down from tsn
+\item hierarchy_up: Get hierarchy up from tsn
+\item hierarchy_full: Get full hierarchy from tsn
 }
 }
 \examples{
 \dontrun{
-## Full down
-hierarchy_down(tsn=161030)
+## Full down (class Mammalia)
+hierarchy_down(tsn=179913)
 
-## Full up
+## Full up (genus Agoseris)
 hierarchy_up(tsn=36485)
 
 ## Full hierarchy
+### genus Liatris
 hierarchy_full(tsn=37906)
+### get raw data back
 hierarchy_full(tsn=37906, raw = TRUE)
+### genus Baetis, get xml back
 hierarchy_full(100800, wt = "xml")
 }
 }
-

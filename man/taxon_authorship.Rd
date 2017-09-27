@@ -14,7 +14,7 @@ taxon_authorship(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 a data.frame
@@ -27,4 +27,3 @@ Returns the author information for the TSN.
 taxon_authorship(tsn = 183671)
 }
 }
-

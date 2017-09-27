@@ -15,7 +15,7 @@ not the international language code (character)}
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 a data.frame
@@ -28,4 +28,3 @@ Get tsn by vernacular language
 tsn_by_vernacular_language(language = "french")
 }
 }
-

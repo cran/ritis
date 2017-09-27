@@ -14,7 +14,7 @@ publications(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 a data.frame
@@ -27,8 +27,6 @@ Returns a list of the pulications used for the TSN.
 publications(tsn = 70340)
 publications(tsn = 70340, wt = "xml")
 
-library(httr)
-publications(tsn = 70340, config = verbose())
+publications(tsn = 70340, verbose = TRUE)
 }
 }
-

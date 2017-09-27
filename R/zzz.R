@@ -1,5 +1,3 @@
-con_utf8 <- function(x) rawToChar(httr::content(x, "raw", encoding = "UTF-8"))
-
 tc <- function(l) Filter(Negate(is.null), l)
 
 argsnull <- function(x) {
@@ -16,6 +14,7 @@ nmslwr <- function(x) {
 
 itbase <- function() 'https://www.itis.gov/ITISWebService/services/ITISService/'
 itjson <- function() 'https://www.itis.gov/ITISWebService/jsonservice/'
+itis_solr_url <- function() "https://services.itis.gov"
 iturl <- function(x) {
   if (!tolower(x) %in% c('json', 'xml')) {
     stop("'wt' must be one of 'json' or 'xml'", call. = FALSE)
@@ -47,14 +46,30 @@ dr_op.list <- function(x, y) {
 
 itis_GET <- function(endpt, args, wt, ...){
   args <- argsnull(args)
-  tt <- httr::GET(paste0(iturl(wt), endpt), query = args, ...)
-  httr::stop_for_status(tt)
-  #err_handle(tt)
-  con_utf8(tt)
+  cli <- crul::HttpClient$new(
+    url = paste0(iturl(wt), endpt),
+    opts = list(...)
+  )
+  tt <- cli$get(query = args)
+  tt$raise_for_status()
+
+  # sort out encoding - if not found, parse differently
+  encoding <- NULL
+  if (!is.null(tt$response_headers$`content-type`)) {
+    encoding <- strsplit(
+      strsplit(tt$response_headers$`content-type`, ";")[[1]][2],
+      "="
+    )[[1]][2]
+  }
+  if (is.null(encoding) || !nzchar(encoding)) {
+    readBin(tt$content, character())
+  } else {
+    tt$parse(encoding)
+  }
 }
 
 parse_raw <- function(x) {
-  if (inherits(x, "character") && !nzchar(x)) {
+  if ((inherits(x, "character") && !nzchar(x)) || is.na(x)) {
     return(tibble::as_data_frame())
   }
   jsonlite::fromJSON(x, flatten = TRUE)

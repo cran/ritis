@@ -14,7 +14,7 @@ geographic_divisions(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Get geographic divisions from tsn
@@ -28,4 +28,3 @@ geographic_divisions(tsn = 180543, wt = "xml")
 geographic_divisions(tsn = 180543, wt = "json", raw = TRUE)
 }
 }
-

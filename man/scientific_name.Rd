@@ -3,7 +3,7 @@
 \name{scientific_name}
 \alias{scientific_name}
 \title{Returns the scientific name for the TSN. Also returns the component parts
-   (names and indicators) of the scientific name.}
+(names and indicators) of the scientific name.}
 \usage{
 scientific_name(tsn, wt = "json", raw = FALSE, ...)
 }
@@ -15,18 +15,17 @@ scientific_name(tsn, wt = "json", raw = FALSE, ...)
 \item{raw}{(logical) Return raw JSON or XML as character string. Required.
 Default: \code{FALSE}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
 a data.frame
 }
 \description{
 Returns the scientific name for the TSN. Also returns the component parts
-   (names and indicators) of the scientific name.
+(names and indicators) of the scientific name.
 }
 \examples{
 \dontrun{
 scientific_name(tsn = 531894)
 }
 }
-
