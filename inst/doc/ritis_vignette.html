@@ -251,52 +251,47 @@ functions. So do read the <code>solrium</code> docs.</p>
 <p>matches only monomials</p>
 
 <pre><code class="r">itis_search(q = &quot;nameWOInd:/[A-Za-z0-9]*[%20]{0,0}*/&quot;)
-#&gt; # A tibble: 10 × 27
-#&gt;      tsn          nameWInd         nameWOInd             unit1   usage
-#&gt;    &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;
-#&gt; 1     51     Schizomycetes     Schizomycetes     Schizomycetes invalid
-#&gt; 2     50          Bacteria          Bacteria          Bacteria   valid
-#&gt; 3     52     Archangiaceae     Archangiaceae     Archangiaceae invalid
-#&gt; 4     53   Pseudomonadales   Pseudomonadales   Pseudomonadales   valid
-#&gt; 5     54 Rhodobacteriineae Rhodobacteriineae Rhodobacteriineae invalid
-#&gt; 6     55  Pseudomonadineae  Pseudomonadineae  Pseudomonadineae invalid
-#&gt; 7     56  Nitrobacteraceae  Nitrobacteraceae  Nitrobacteraceae invalid
-#&gt; 8     57       Nitrobacter       Nitrobacter       Nitrobacter   valid
-#&gt; 9     65      Nitrosomonas      Nitrosomonas      Nitrosomonas   valid
-#&gt; 10    70  Thiobacteriaceae  Thiobacteriaceae  Thiobacteriaceae invalid
-#&gt; # ... with 22 more variables: unacceptReason &lt;chr&gt;,
-#&gt; #   credibilityRating &lt;chr&gt;, completenessRating &lt;chr&gt;,
-#&gt; #   currencyRating &lt;chr&gt;, kingdom &lt;chr&gt;, rankID &lt;chr&gt;, rank &lt;chr&gt;,
-#&gt; #   hierarchySoFar &lt;chr&gt;, hierarchySoFarWRanks &lt;chr&gt;, hierarchyTSN &lt;chr&gt;,
-#&gt; #   synonyms &lt;chr&gt;, synonymTSNs &lt;chr&gt;, otherSource &lt;chr&gt;,
-#&gt; #   acceptedTSN &lt;chr&gt;, comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate &lt;chr&gt;,
-#&gt; #   `_version_` &lt;dbl&gt;, taxonAuthor &lt;chr&gt;, vernacular &lt;chr&gt;,
-#&gt; #   hierarchicalSort &lt;chr&gt;, parentTSN &lt;chr&gt;
+#&gt; # A tibble: 10 x 27
+#&gt;    tsn   name… name… unit1 usage unac… cred… comp… curr… king… rank… rank 
+#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1 51    Schi… Schi… Schi… inva… unav… Mini… unkn… unkn… Bact… 60    Class
+#&gt;  2 50    Bact… Bact… Bact… valid &lt;NA&gt;  TWG … part… 2012  Bact… 10    King…
+#&gt;  3 52    Arch… Arch… Arch… inva… unav… Mini… unkn… unkn… Bact… 140   Fami…
+#&gt;  4 53    Pseu… Pseu… Pseu… valid &lt;NA&gt;  TWG … comp… 2012  Bact… 100   Order
+#&gt;  5 54    Rhod… Rhod… Rhod… inva… unav… Mini… unkn… unkn… Bact… 110   Subo…
+#&gt;  6 55    Pseu… Pseu… Pseu… inva… unav… Mini… unkn… unkn… Bact… 110   Subo…
+#&gt;  7 56    Nitr… Nitr… Nitr… inva… unav… Mini… unkn… unkn… Bact… 140   Fami…
+#&gt;  8 57    Nitr… Nitr… Nitr… valid &lt;NA&gt;  TWG … comp… 2012  Bact… 180   Genus
+#&gt;  9 65    Nitr… Nitr… Nitr… valid &lt;NA&gt;  TWG … comp… 2012  Bact… 180   Genus
+#&gt; 10 70    Thio… Thio… Thio… inva… unav… Mini… unkn… unkn… Bact… 140   Fami…
+#&gt; # ... with 15 more variables: hierarchySoFar &lt;chr&gt;, hierarchySoFarWRanks
+#&gt; #   &lt;chr&gt;, hierarchyTSN &lt;chr&gt;, synonyms &lt;chr&gt;, synonymTSNs &lt;chr&gt;,
+#&gt; #   otherSource &lt;chr&gt;, acceptedTSN &lt;chr&gt;, comment &lt;chr&gt;, createDate &lt;chr&gt;,
+#&gt; #   updateDate &lt;chr&gt;, `_version_` &lt;dbl&gt;, taxonAuthor &lt;chr&gt;, vernacular
+#&gt; #   &lt;chr&gt;, hierarchicalSort &lt;chr&gt;, parentTSN &lt;chr&gt;
 </code></pre>
 
 <p>matches only binomials</p>
 
 <pre><code class="r">itis_search(q = &quot;nameWOInd:/[A-Za-z0-9]*[%20]{1,1}[A-Za-z0-9]*/&quot;)
-#&gt; # A tibble: 10 × 25
-#&gt;      tsn                  nameWInd                 nameWOInd        unit1
-#&gt;    &lt;chr&gt;                     &lt;chr&gt;                     &lt;chr&gt;        &lt;chr&gt;
-#&gt; 1     58        Nitrobacter agilis        Nitrobacter agilis  Nitrobacter
-#&gt; 2     59        Nitrobacter flavus        Nitrobacter flavus  Nitrobacter
-#&gt; 3     60  Nitrobacter oligotrophis  Nitrobacter oligotrophis  Nitrobacter
-#&gt; 4     61   Nitrobacter polytrophus   Nitrobacter polytrophus  Nitrobacter
-#&gt; 5     62      Nitrobacter punctata      Nitrobacter punctata  Nitrobacter
-#&gt; 6     64  Nitrobacter winogradskyi  Nitrobacter winogradskyi  Nitrobacter
-#&gt; 7     66     Nitrosomonas europaea     Nitrosomonas europaea Nitrosomonas
-#&gt; 8     67 Nitrosomonas groningensis Nitrosomonas groningensis Nitrosomonas
-#&gt; 9     68   Nitrosomonas javenensis   Nitrosomonas javenensis Nitrosomonas
-#&gt; 10    69    Nitrosomonas monocella    Nitrosomonas monocella Nitrosomonas
-#&gt; # ... with 21 more variables: unit2 &lt;chr&gt;, usage &lt;chr&gt;,
-#&gt; #   unacceptReason &lt;chr&gt;, credibilityRating &lt;chr&gt;, kingdom &lt;chr&gt;,
-#&gt; #   rankID &lt;chr&gt;, rank &lt;chr&gt;, hierarchySoFar &lt;chr&gt;,
-#&gt; #   hierarchySoFarWRanks &lt;chr&gt;, hierarchyTSN &lt;chr&gt;, synonyms &lt;chr&gt;,
-#&gt; #   synonymTSNs &lt;chr&gt;, otherSource &lt;chr&gt;, acceptedTSN &lt;chr&gt;,
-#&gt; #   comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate &lt;chr&gt;, `_version_` &lt;dbl&gt;,
-#&gt; #   taxonAuthor &lt;chr&gt;, parentTSN &lt;chr&gt;, hierarchicalSort &lt;chr&gt;
+#&gt; # A tibble: 10 x 25
+#&gt;    tsn   name… name… unit1 unit2 usage unac… cred… king… rank… rank  hier…
+#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt;  1 58    Nitr… Nitr… Nitr… agil… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt;  2 59    Nitr… Nitr… Nitr… flav… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt;  3 60    Nitr… Nitr… Nitr… olig… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt;  4 61    Nitr… Nitr… Nitr… poly… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt;  5 62    Nitr… Nitr… Nitr… punc… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt;  6 64    Nitr… Nitr… Nitr… wino… valid &lt;NA&gt;  TWG … Bact… 220   Spec… 64:$…
+#&gt;  7 66    Nitr… Nitr… Nitr… euro… valid &lt;NA&gt;  TWG … Bact… 220   Spec… 66:$…
+#&gt;  8 67    Nitr… Nitr… Nitr… gron… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt;  9 68    Nitr… Nitr… Nitr… jave… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt; 10 69    Nitr… Nitr… Nitr… mono… inva… unav… Mini… Bact… 220   Spec… 50:$…
+#&gt; # ... with 13 more variables: hierarchySoFarWRanks &lt;chr&gt;, hierarchyTSN
+#&gt; #   &lt;chr&gt;, synonyms &lt;chr&gt;, synonymTSNs &lt;chr&gt;, otherSource &lt;chr&gt;,
+#&gt; #   acceptedTSN &lt;chr&gt;, comment &lt;chr&gt;, createDate &lt;chr&gt;, updateDate &lt;chr&gt;,
+#&gt; #   `_version_` &lt;dbl&gt;, taxonAuthor &lt;chr&gt;, parentTSN &lt;chr&gt;,
+#&gt; #   hierarchicalSort &lt;chr&gt;
 </code></pre>
 
 <h2>ITIS REST API interface</h2>
@@ -310,39 +305,39 @@ functions. So do read the <code>solrium</code> docs.</p>
 <p>Get accepted names for a TSN</p>
 
 <pre><code class="r">accepted_names(tsn = 504239)
-#&gt; # A tibble: 1 × 3
-#&gt;          acceptedName acceptedTsn     author
-#&gt;                 &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;
-#&gt; 1 Dasiphora fruticosa      836659 (L.) Rydb.
+#&gt; # A tibble: 1 x 3
+#&gt;   acceptedName        acceptedTsn author    
+#&gt;   &lt;chr&gt;               &lt;chr&gt;       &lt;chr&gt;     
+#&gt; 1 Dasiphora fruticosa 836659      (L.) Rydb.
 </code></pre>
 
 <p>Get common names for a TSN</p>
 
 <pre><code class="r">common_names(tsn = 183833)
-#&gt; # A tibble: 3 × 3
-#&gt;            commonName language    tsn
-#&gt;                 &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;
-#&gt; 1 African hunting dog  English 183833
-#&gt; 2    African Wild Dog  English 183833
-#&gt; 3 Painted Hunting Dog  English 183833
+#&gt; # A tibble: 3 x 3
+#&gt;   commonName          language tsn   
+#&gt;   &lt;chr&gt;               &lt;chr&gt;    &lt;chr&gt; 
+#&gt; 1 African hunting dog English  183833
+#&gt; 2 African Wild Dog    English  183833
+#&gt; 3 Painted Hunting Dog English  183833
 </code></pre>
 
 <p>Full hierarchy for a TSN</p>
 
 <pre><code class="r">hierarchy_full(tsn = 37906)
-#&gt; # A tibble: 60 × 5
-#&gt;         parentname parenttsn      rankname       taxonname    tsn
-#&gt; *            &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;
-#&gt; 1                                  Kingdom         Plantae 202422
-#&gt; 2          Plantae    202422    Subkingdom   Viridiplantae 954898
-#&gt; 3    Viridiplantae    954898  Infrakingdom    Streptophyta 846494
-#&gt; 4     Streptophyta    846494 Superdivision     Embryophyta 954900
-#&gt; 5      Embryophyta    954900      Division    Tracheophyta 846496
-#&gt; 6     Tracheophyta    846496   Subdivision Spermatophytina 846504
-#&gt; 7  Spermatophytina    846504         Class   Magnoliopsida  18063
-#&gt; 8    Magnoliopsida     18063    Superorder       Asteranae 846535
-#&gt; 9        Asteranae    846535         Order       Asterales  35419
-#&gt; 10       Asterales     35419        Family      Asteraceae  35420
+#&gt; # A tibble: 60 x 5
+#&gt;    parentname      parenttsn rankname      taxonname       tsn   
+#&gt;  * &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt; 
+#&gt;  1 &quot;&quot;              &quot;&quot;        Kingdom       Plantae         202422
+#&gt;  2 Plantae         202422    Subkingdom    Viridiplantae   954898
+#&gt;  3 Viridiplantae   954898    Infrakingdom  Streptophyta    846494
+#&gt;  4 Streptophyta    846494    Superdivision Embryophyta     954900
+#&gt;  5 Embryophyta     954900    Division      Tracheophyta    846496
+#&gt;  6 Tracheophyta    846496    Subdivision   Spermatophytina 846504
+#&gt;  7 Spermatophytina 846504    Class         Magnoliopsida   18063 
+#&gt;  8 Magnoliopsida   18063     Superorder    Asteranae       846535
+#&gt;  9 Asteranae       846535    Order         Asterales       35419 
+#&gt; 10 Asterales       35419     Family        Asteraceae      35420 
 #&gt; # ... with 50 more rows
 </code></pre>
 
