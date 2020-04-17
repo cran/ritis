@@ -9,10 +9,10 @@
 #' @return Zero row data.frame if the name is accepted, otherwise a data.frame
 #' with information on the currently accepted name
 #' @examples \dontrun{
-#' # TSN accepted - good name
+#' # TSN accepted - good name, empty data.frame returned
 #' accepted_names(tsn = 208527)
 #'
-#' # TSN not accepted - input TSN is old name
+#' # TSN not accepted - input TSN is old name, non-empty data.frame returned
 #' accepted_names(tsn = 504239)
 #'
 #' # raw json
@@ -23,7 +23,7 @@ accepted_names <- function(tsn, wt = "json", raw = FALSE, ...) {
   if (raw || wt == "xml") return(out)
   tmp <- parse_raw(out)
   if (all(is.na(tmp$acceptedNames))) {
-    tibble::data_frame()
+    tibble::tibble()
   } else {
     dr_op(tibble::as_tibble(tmp$acceptedNames), "class")
   }

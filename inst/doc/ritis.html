@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Scott Chamberlain" />
 
-<meta name="date" content="2019-10-28" />
+<meta name="date" content="2020-04-17" />
 
 <title>ritis introduction</title>
 
@@ -21,26 +20,27 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -49,9 +49,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,9 +118,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -289,7 +286,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -304,20 +302,32 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">ritis introduction</h1>
 <h4 class="author">Scott Chamberlain</h4>
-<h4 class="date">2019-10-28</h4>
+<h4 class="date">2020-04-17</h4>
 
 
 
 <p>An interface to the Integrated Taxonomic Information System (ITIS)</p>
-<p>See also the <a href="https://taxize.dev/">taxize book</a> for a manual on working with taxonomic data in R, including with ITIS data.</p>
+<p>See also the taxize book (<a href="https://taxize.dev/" class="uri">https://taxize.dev/</a>) for a manual on working with taxonomic data in R, including with ITIS data.</p>
+<p>How to cite ITIS. From <a href="https://itis.gov/citation.html" class="uri">https://itis.gov/citation.html</a></p>
+<p>To cite data obtained from ITIS, the following citation format is offered as a suggestion:</p>
+<pre><code>Retrieved [month, day, year], from the Integrated Taxonomic Information System on-line database, http://www.itis.gov.</code></pre>
+<p>ITIS is one of many different taxonomic data sources. Other include: Catalogue of Life (and COL+), NCBI taxonomy, International Plant Names Index, Index Fungorum, and more. The Wikipedia entry (<a href="https://en.wikipedia.org/wiki/Integrated_Taxonomic_Information_System" class="uri">https://en.wikipedia.org/wiki/Integrated_Taxonomic_Information_System</a>) states that ITIS has a North American focus, but includes many taxa not in North America.</p>
+<div id="terminology" class="section level2">
+<h2>Terminology</h2>
+<ul>
+<li>“mononomial”: a taxonomic name with one part, e.g, <em>Poa</em></li>
+<li>“binomial”: a taxonomic name with two parts, e.g, <em>Poa annua</em></li>
+<li>“trinomial”: a taxonomic name with three parts, e.g, <em>Poa annua annua</em></li>
+</ul>
+</div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>Install from CRAN</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;ritis&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;ritis&quot;</span>)</span></code></pre></div>
 <p>Or install the development version from GitHub</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ropensci/ritis&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ropensci/ritis&quot;</span>)</span></code></pre></div>
 <p>Load <code>ritis</code></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;ritis&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">library</span>(<span class="st">&quot;ritis&quot;</span>)</span></code></pre></div>
 </div>
 <div id="itis-solr-interface" class="section level2">
 <h2>ITIS Solr interface</h2>
@@ -332,9 +342,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>ITIS Solr API docs: <a href="https://www.itis.gov/solr_documentation.html" class="uri">https://www.itis.gov/solr_documentation.html</a></p>
 <p>Some examples:</p>
 <p>matches only monomials</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">itis_search</span>(<span class="dt">q =</span> <span class="st">&quot;nameWOInd:/[A-Za-z0-9]*[ ]{0,0}*/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">itis_search</span>(<span class="dt">q =</span> <span class="st">&quot;nameWOInd:/[A-Za-z0-9]*[ ]{0,0}*/&quot;</span>)</span></code></pre></div>
 <p>matches only binomials</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">itis_search</span>(<span class="dt">q =</span> <span class="st">&quot;nameWOInd:/[A-Za-z0-9]*[ ]{1,1}[A-Za-z0-9]*/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">itis_search</span>(<span class="dt">q =</span> <span class="st">&quot;nameWOInd:/[A-Za-z0-9]*[ ]{1,1}[A-Za-z0-9]*/&quot;</span>)</span></code></pre></div>
+<p>The syntax for <code>itis_search()</code> can be a bit hard to grasp. See this ITIS page <a href="https://itis.gov/solr_examples.html" class="uri">https://itis.gov/solr_examples.html</a> for help on generating the syntax they want for specific searches.</p>
 </div>
 <div id="itis-rest-api-interface" class="section level2">
 <h2>ITIS REST API interface</h2>
@@ -342,11 +353,11 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>The following are some example uses. There are many more methods not shown below</p>
 <hr />
 <p>Get accepted names for a TSN</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">accepted_names</span>(<span class="dt">tsn =</span> <span class="dv">504239</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">accepted_names</span>(<span class="dt">tsn =</span> <span class="dv">504239</span>)</span></code></pre></div>
 <p>Get common names for a TSN</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">common_names</span>(<span class="dt">tsn =</span> <span class="dv">183833</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">common_names</span>(<span class="dt">tsn =</span> <span class="dv">183833</span>)</span></code></pre></div>
 <p>Full hierarchy for a TSN</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">hierarchy_full</span>(<span class="dt">tsn =</span> <span class="dv">37906</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">hierarchy_full</span>(<span class="dt">tsn =</span> <span class="dv">37906</span>)</span></code></pre></div>
 </div>
 
 

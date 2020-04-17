@@ -13,63 +13,25 @@ ritis
 
 An interface to the Integrated Taxonomic Information System (ITIS)
 
-* [ITIS API Docs](https://www.itis.gov/ws_description.html)
-* [Solr service](https://www.itis.gov/solr_documentation.html)
-* [taxize book](https://taxize.dev/)
+* ITIS API Docs: https://www.itis.gov/ws_description.html
+* Solr service: https://www.itis.gov/solr_documentation.html
+* taxize book: https://taxize.dev/
+* ritis docs: https://docs.ropensci.org/ritis/
 
-## Package API
+How to cite ITIS. From https://itis.gov/citation.html 
 
- - `accepted_names`
- - `any_match_count`
- - `comment_detail`
- - `common_names`
- - `core_metadata`
- - `coverage`
- - `credibility_rating`
- - `credibility_ratings`
- - `currency`
- - `date_data`
- - `description`
- - `experts`
- - `full_record`
- - `geographic_divisions`
- - `geographic_values`
- - `global_species_completeness`
- - `hierarchy_down`
- - `hierarchy_full`
- - `hierarchy_up`
- - `itis_facet`
- - `itis_group`
- - `itis_highlight`
- - `itis_search`
- - `jurisdiction_origin_values`
- - `jurisdiction_values`
- - `jurisdictional_origin`
- - `kingdom_name`
- - `kingdom_names`
- - `last_change_date`
- - `lsid2tsn`
- - `other_sources`
- - `parent_tsn`
- - `publications`
- - `rank_name`
- - `rank_names`
- - `record`
- - `review_year`
- - `scientific_name`
- - `search_any_match_paged`
- - `search_anymatch`
- - `search_common`
- - `search_scientific`
- - `synonym_names`
- - `taxon_authorship`
- - `terms`
- - `tsn_by_vernacular_language`
- - `tsn2lsid`
- - `unacceptability_reason`
- - `usage`
- - `vernacular_languages`
+To cite data obtained from ITIS, the following citation format is offered as a suggestion:
 
+    Retrieved [month, day, year], from the Integrated Taxonomic Information System on-line database, http://www.itis.gov.
+
+
+ITIS is one of many different taxonomic data sources. Other include: Catalogue of Life (and COL+), NCBI taxonomy, International Plant Names Index, Index Fungorum, and more. The Wikipedia entry (https://en.wikipedia.org/wiki/Integrated_Taxonomic_Information_System) states that ITIS has a North American focus, but includes many taxa not in North America.
+
+## Terminology
+
+* "mononomial": a taxonomic name with one part, e.g, _Poa_
+* "binomial": a taxonomic name with two parts, e.g, _Poa annua_
+* "trinomial": a taxonomic name with three parts, e.g, _Poa annua annua_
 
 ## Installation
 
@@ -84,7 +46,7 @@ Dev version
 
 
 ```r
-devtools::install_github("ropensci/ritis")
+remotes::install_github("ropensci/ritis")
 ```
 
 
@@ -92,31 +54,36 @@ devtools::install_github("ropensci/ritis")
 library("ritis")
 ```
 
+The following are examples of some functions. There are many more avaiable.
+
 ## Solr service
+
 
 matches only monomials
 
 
 ```r
 itis_search(q = "nameWOInd:/[A-Za-z0-9]*[ ]{0,0}*/")
-#> # A tibble: 10 x 20
+#> # A tibble: 10 x 28
 #>    tsn   nameWInd nameWOInd unit1 usage credibilityRati… completenessRat…
 #>    <chr> <chr>    <chr>     <chr> <chr> <chr>            <chr>           
-#>  1 1348… Phthiri… Phthirii… Phth… valid No review; untr… unknown         
-#>  2 1348… Phthiria Phthiria  Phth… valid No review; untr… unknown         
-#>  3 1348… Poecilo… Poecilog… Poec… valid No review; untr… unknown         
-#>  4 1348… Neacreo… Neacreot… Neac… valid No review; untr… unknown         
-#>  5 1348… Geronin… Geroninae Gero… valid No review; untr… unknown         
-#>  6 1348… Geron    Geron     Geron valid No review; untr… unknown         
-#>  7 1349… Cythere… Cytherei… Cyth… valid No review; untr… unknown         
-#>  8 1349… Pantarb… Pantarbes Pant… valid No review; untr… unknown         
-#>  9 1349… Tomomyz… Tomomyzi… Tomo… valid No review; untr… unknown         
-#> 10 1349… Amphico… Amphicos… Amph… valid No review; untr… unknown         
-#> # … with 13 more variables: currencyRating <chr>, kingdom <chr>,
-#> #   parentTSN <chr>, rankID <chr>, rank <chr>, hierarchySoFar <chr>,
-#> #   hierarchySoFarWRanks <chr>, hierarchyTSN <chr>, otherSource <chr>,
-#> #   createDate <chr>, updateDate <chr>, hierarchicalSort <chr>,
-#> #   `_version_` <dbl>
+#>  1 1427… Xenocha… Xenochae… Xeno… valid TWG standards m… complete        
+#>  2 1428… Myopiti… Myopitini Myop… inva… TWG standards m… unknown         
+#>  3 1428… Rhynenc… Rhynenci… Rhyn… valid TWG standards m… complete        
+#>  4 1428… Urophora Urophora  Urop… valid TWG standards m… complete        
+#>  5 1428… Oedaspi… Oedaspid… Oeda… inva… TWG standards m… unknown         
+#>  6 1428… Aciurina Aciurina  Aciu… valid TWG standards m… complete        
+#>  7 1428… Callach… Callachna Call… inva… TWG standards m… unknown         
+#>  8 1428… Cecidoc… Cecidoch… Ceci… valid TWG standards m… complete        
+#>  9 1428… Eurosta  Eurosta   Euro… valid TWG standards m… complete        
+#> 10 1428… Peronyma Peronyma  Pero… valid TWG standards m… complete        
+#> # … with 21 more variables: currencyRating <chr>, taxonAuthor <chr>,
+#> #   kingdom <chr>, parentTSN <chr>, rankID <chr>, rank <chr>,
+#> #   hierarchySoFar <chr>, hierarchySoFarWRanks <chr>, hierarchyTSN <chr>,
+#> #   publication <chr>, otherSource <chr>, createDate <chr>, updateDate <chr>,
+#> #   hierarchicalSort <chr>, `_version_` <dbl>, unacceptReason <chr>,
+#> #   synonyms <chr>, synonymTSNs <chr>, acceptedTSN <chr>, comment <chr>,
+#> #   expert <chr>
 ```
 
 matches only binomials
@@ -124,25 +91,24 @@ matches only binomials
 
 ```r
 itis_search(q = "nameWOInd:/[A-Za-z0-9]*[ ]{1,1}[A-Za-z0-9]*/")
-#> # A tibble: 10 x 24
-#>    tsn   nameWInd nameWOInd unit1 unit2 usage unacceptReason
-#>    <chr> <chr>    <chr>     <chr> <chr> <chr> <chr>         
-#>  1 1347… Rhabdop… Rhabdops… Rhab… mus   inva… junior synonym
-#>  2 1347… Apolysi… Apolysis… Apol… neut… valid <NA>          
-#>  3 1347… Pseudog… Pseudoge… Pseu… neut… inva… junior synonym
-#>  4 1347… Apolysi… Apolysis… Apol… nigr… valid <NA>          
-#>  5 1347… Oligodr… Oligodra… Olig… nigr… inva… junior synonym
-#>  6 1347… Apolysi… Apolysis… Apol… obsc… valid <NA>          
-#>  7 1347… Pseudog… Pseudoge… Pseu… obsc… inva… junior synonym
-#>  8 1347… Apolysi… Apolysis… Apol… palp… valid <NA>          
-#>  9 1347… Oligodr… Oligodra… Olig… palp… inva… junior synonym
-#> 10 1347… Apolysi… Apolysis… Apol… pann… valid <NA>          
-#> # … with 17 more variables: credibilityRating <chr>, taxonAuthor <chr>,
-#> #   kingdom <chr>, rankID <chr>, rank <chr>, hierarchySoFar <chr>,
-#> #   hierarchySoFarWRanks <chr>, hierarchyTSN <chr>, synonyms <chr>,
-#> #   synonymTSNs <chr>, otherSource <chr>, acceptedTSN <chr>,
-#> #   createDate <chr>, updateDate <chr>, `_version_` <dbl>,
-#> #   parentTSN <chr>, hierarchicalSort <chr>
+#> # A tibble: 10 x 25
+#>    tsn   nameWInd nameWOInd unit1 unit2 usage unacceptReason credibilityRati…
+#>    <chr> <chr>    <chr>     <chr> <chr> <chr> <chr>          <chr>           
+#>  1 1427… Trypeta… Trypeta … Tryp… plat… inva… original name… TWG standards m…
+#>  2 1427… Xenocha… Xenochae… Xeno… aura… valid <NA>           TWG standards m…
+#>  3 1428… Eutreta… Eutreta … Eutr… aura… inva… original name… TWG standards m…
+#>  4 1428… Xenocha… Xenochae… Xeno… dich… valid <NA>           TWG standards m…
+#>  5 1428… Rhynenc… Rhynenci… Rhyn… long… valid <NA>           TWG standards m…
+#>  6 1428… Aleomyi… Aleomyia… Aleo… alpha inva… junior synonym TWG standards m…
+#>  7 1428… Urophor… Urophora… Urop… acut… inva… original name… TWG standards m…
+#>  8 1428… Urophor… Urophora… Urop… affi… valid <NA>           TWG standards m…
+#>  9 1428… Trypeta… Trypeta … Tryp… affi… inva… original name… TWG standards m…
+#> 10 1428… Urophor… Urophora… Urop… card… valid <NA>           TWG standards m…
+#> # … with 17 more variables: taxonAuthor <chr>, kingdom <chr>, rankID <chr>,
+#> #   rank <chr>, hierarchySoFar <chr>, hierarchySoFarWRanks <chr>,
+#> #   hierarchyTSN <chr>, synonyms <chr>, synonymTSNs <chr>, publication <chr>,
+#> #   otherSource <chr>, acceptedTSN <chr>, createDate <chr>, updateDate <chr>,
+#> #   `_version_` <dbl>, parentTSN <chr>, hierarchicalSort <chr>
 ```
 
 ## REST API
@@ -177,18 +143,18 @@ Full hierarchy for a TSN
 ```r
 hierarchy_full(tsn = 37906)
 #> # A tibble: 60 x 5
-#>    parentname      parenttsn rankname      taxonname       tsn   
-#>    <chr>           <chr>     <chr>         <chr>           <chr> 
-#>  1 ""              ""        Kingdom       Plantae         202422
-#>  2 Plantae         202422    Subkingdom    Viridiplantae   954898
-#>  3 Viridiplantae   954898    Infrakingdom  Streptophyta    846494
-#>  4 Streptophyta    846494    Superdivision Embryophyta     954900
-#>  5 Embryophyta     954900    Division      Tracheophyta    846496
-#>  6 Tracheophyta    846496    Subdivision   Spermatophytina 846504
-#>  7 Spermatophytina 846504    Class         Magnoliopsida   18063 
-#>  8 Magnoliopsida   18063     Superorder    Asteranae       846535
-#>  9 Asteranae       846535    Order         Asterales       35419 
-#> 10 Asterales       35419     Family        Asteraceae      35420 
+#>    parentname        parenttsn rankname      taxonname       tsn   
+#>    <chr>             <chr>     <chr>         <chr>           <chr> 
+#>  1 ""                ""        Kingdom       Plantae         202422
+#>  2 "Plantae"         "202422"  Subkingdom    Viridiplantae   954898
+#>  3 "Viridiplantae"   "954898"  Infrakingdom  Streptophyta    846494
+#>  4 "Streptophyta"    "846494"  Superdivision Embryophyta     954900
+#>  5 "Embryophyta"     "954900"  Division      Tracheophyta    846496
+#>  6 "Tracheophyta"    "846496"  Subdivision   Spermatophytina 846504
+#>  7 "Spermatophytina" "846504"  Class         Magnoliopsida   18063 
+#>  8 "Magnoliopsida"   "18063"   Superorder    Asteranae       846535
+#>  9 "Asteranae"       "846535"  Order         Asterales       35419 
+#> 10 "Asterales"       "35419"   Family        Asteraceae      35420 
 #> # … with 50 more rows
 ```
 

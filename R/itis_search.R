@@ -10,9 +10,29 @@
 #' construct the proxy connection.
 #' @param callopts Curl options passed on to [crul::HttpClient]
 #' @references <https://www.itis.gov/solr_documentation.html>
+#' @details
+#' The syntax for this function can be a bit hard to grasp. See
+#' https://itis.gov/solr_examples.html for help on generating the
+#' syntax ITIS wants for specific searches.
 #' @examples \dontrun{
 #' itis_search(q = "tsn:182662")
+#' 
+#' # get all orders within class Aves (birds)
+#' z <- itis_search(q = "rank:Class AND nameWOInd:Aves")
+#' hierarchy_down(z$tsn)
+#' 
+#' # get taxa "downstream" from a target taxon
+#' ## taxize and taxizedb packages have downstream() fxns, but
+#' ## you can do a similar thing here by iteratively drilling down
+#' ## the taxonomic hierarchy
+#' ## here, we get families within Aves
+#' library(data.table)
+#' aves <- itis_search(q = "rank:Class AND nameWOInd:Aves")
+#' aves_orders <- hierarchy_down(aves$tsn)
+#' aves_families <- lapply(aves_orders$tsn, hierarchy_down)
+#' rbindlist(aves_families)
 #'
+#' # the tila operator
 #' itis_search(q = "nameWOInd:Liquidamber\\ styraciflua~0.4")
 #' 
 #' # matches only monomials
